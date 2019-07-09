@@ -80,10 +80,6 @@
                             <strong>Invoice Date:</strong>
                             <p class="m-0" t-field="o.date_invoice"/>
                         </div>
-                        <!--<div class="col-auto mw-100 mb-2" t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" name="due_date">
-                            <strong>Due Date:</strong>
-                            <p class="m-0" t-field="o.date_due"/>
-                        </div>-->
                         <div class="col-auto mw-100 mb-2" t-if="o.origin" name="origin">
                             <strong>Source:</strong>
                             <p class="m-0" t-field="o.origin"/>
@@ -97,10 +93,10 @@
                             <p class="m-0" t-field="o.reference"/>
                         </div>-->
                         <div class="col-auto mw-100 mb-2">
-                            <strong>M. pago:</strong>
+                            <strong>Método pago:</strong>
                             <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
                             <t t-set="met_pag" t-value="xml.get('MetodoPago')"/>
-                            <span t-esc="met_pag"/>
+                            <p t-esc="met_pag"/>
                         </div>
                     </div>
 
@@ -116,7 +112,7 @@
                                 <th class="d-none text-left"><span>Source Document</span></th>
                                 <th class="text-right"><span>Quantity</span></th>
                                 <th t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Unit Price</span></th>
-                                <th class="text-left"><span>Descuento</span></th>
+                                <!--<th class="text-left"><span>Descuento</span></th>-->
                                 <th t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                     <span>Disc.(%)</span>
                                     <!-- TODO: remove in master -->
@@ -149,7 +145,7 @@
                                         <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                             <span t-field="line.price_unit"/>
                                         </td>
-                                        <td><span t-field="line.discount"/></td>
+                                        <!--<td><span t-field="line.discount"/></td>-->
                                         <td t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                             <span t-field="line.discount"/>
                                         </td>
@@ -236,15 +232,9 @@
                             <b>OBSERVACIONES: </b><span>SIN OBSERVACIONES</span>
                         </p> 
                     </div>
-                    <p t-if="o.reference">
-                        Please use the following communication for your payment : <b><span t-field="o.reference"/></b>
-                    </p>
                     <p t-if="o.comment" name="comment">
                         <span t-field="o.comment"/>
                     </p>
-                    <!--<p t-if="o.payment_term_id" name="payment_term">
-                        <span t-field="o.payment_term_id.note"/>
-                    </p>-->
                     <p t-if="o.fiscal_position_id.note" name="note">
                         <span t-field="o.fiscal_position_id.note"/>
                     </p>
