@@ -9,7 +9,8 @@
         Module to give design to the invoices report and show information both of the client and the company
     """,
 
-    'author': "My Company",
+    'author': "Xmarts",
+    'Collaborator': "Gilberto Santiago Acevedo",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
