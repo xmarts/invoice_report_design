@@ -92,12 +92,12 @@
                             <strong>Reference:</strong>
                             <p class="m-0" t-field="o.reference"/>
                         </div>-->
-                        <div class="col-auto mw-100 mb-2">
+                        <!--<div class="col-auto mw-100 mb-2">
                             <strong>Método pago:</strong>
                             <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
                             <t t-set="met_pag" t-value="xml.get('MetodoPago')"/>
                             <p t-esc="met_pag"/>
-                        </div>
+                        </div>-->
                     </div>
 
                     <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
