@@ -99,9 +99,6 @@
                                 <t t-set="met_pag" t-value="xml.get('MetodoPago')"/>
                                 <p t-esc="met_pag"/>
                             </t>
-                            <t t-else="">
-                                <p>La factura no ha timbrado</p>
-                            </t>
                         </div>
                     </div>
 
