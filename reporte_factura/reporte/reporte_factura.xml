@@ -93,12 +93,10 @@
                             <p class="m-0" t-field="o.reference"/>
                         </div>-->
                         <div class="col-auto mw-100 mb-2">
-                            <t t-if="o.l10n_mx_edi_get_xml_etree()">
-                                <strong>Método pago:</strong>
-                                <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
-                                <t t-set="met_pag" t-value="xml.get('MetodoPago')"/>
-                                <p t-esc="met_pag"/>
-                            </t>
+                            <strong>Método pago:</strong>
+                            <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
+                            <t t-set="met_pag" t-value="xml.get('MetodoPago')"/>
+                            <p t-esc="met_pag"/>
                         </div>
                     </div>
 
