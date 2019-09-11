@@ -139,7 +139,11 @@
                                 <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
                                     <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                         <!--<td name="unidad_medida"><span t-field="line.uom_id"/></td>-->
-                                        <td><span>Por definir</span></td>
+                                        <td>
+                                            <t t-field="line.product_id.default_code">
+                                                <span t-field="line.product_id.default_code"/>
+                                            </t>
+                                        </td>
                                         <td name="account_invoice_line_name"><span t-field="line.name"/></td>
                                         <td class="d-none"><span t-field="line.origin"/></td>
                                         <td class="text-right">
