@@ -110,7 +110,7 @@
                                 <!-- TODO: remove in master -->
                                 <t t-set="colspan" t-value="6"/>
                                 <!--<th class="text-left"><span>Uni. Med.</span></th>-->
-                                <th class="Text-left"><span>Código</span></th>
+                                <th class="text-left"><span>Código</span></th>
                                 <th class="text-left"><span>Descripción</span></th>
                                 <th class="d-none text-left"><span>Source Document</span></th>
                                 <th class="text-right"><span>Cantidad</span></th>
