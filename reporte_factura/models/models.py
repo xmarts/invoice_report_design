@@ -13,3 +13,16 @@ class AddFieldAmountText(models.Model):
 	@api.depends('amount_total')
 	def _get_amount_to_text(self):
 		self.cam_monto_letra = monto_letra.get_amount_to_text(self, self.amount_total, self.currency_id.name)
+
+class AccountInvoiceLine(models.Model):
+	_inherit = "account.invoice.line"
+
+	precio_unico = fields.Monetary(compute="_get_precio_unit")
+
+	@api.depends('price_unit')
+	def _get_precio_unit(self):
+		for line in self:
+			if line.price_unit:
+				line.precio_unico = line.price_unit
+			else:
+				line.precio_unico = 0.0	

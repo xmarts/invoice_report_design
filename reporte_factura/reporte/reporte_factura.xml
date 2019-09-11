@@ -151,7 +151,7 @@
                                             <span t-field="line.uom_id" groups="uom.group_uom"/>
                                         </td>
                                         <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                            <span t-field="line.price_unit"/>
+                                            <span t-field="line.precio_unico"/>
                                         </td>
                                         <!--<td><span t-field="line.discount"/></td>-->
                                         <!--<td t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
