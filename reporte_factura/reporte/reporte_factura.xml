@@ -114,10 +114,11 @@
                     <br/>
                     <br/>
                     <div id="informations" class="row mt32 mb32" style="border-top:6px solid #F77B22;">
-                        <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor">
+                        <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor" style="font-size:8pt;">
                             <strong>Receptor</strong>
-                            <p t-esc="xml.Receptor.get('Nombre')"/>
-                            <p>RFC: <span t-esc="xml.Receptor.get('Rfc')"/> </p>
+                            <span t-esc="xml.Receptor.get('Nombre')"/>
+                            <br/>
+                            <span>RFC: <span t-esc="xml.Receptor.get('Rfc')"/> </span>
                             <t t-if="o.partner_id.street_name">
                                 <p t-field="o.partner_id.street_name" />
                             </t>
