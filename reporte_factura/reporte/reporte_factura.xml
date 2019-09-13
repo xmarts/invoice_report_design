@@ -114,13 +114,14 @@
                     <br/>
                     <br/>
                     <div id="informations" class="row mt32 mb32" style="border-top:6px solid #F77B22;">
-                        <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor" style="font-size:8pt;">
+                        <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor" style="font-size:9pt;">
                             <strong>Receptor</strong>
+                            <br/>
                             <span t-esc="xml.Receptor.get('Nombre')"/>
                             <br/>
                             <span>RFC: <span t-esc="xml.Receptor.get('Rfc')"/> </span>
                             <t t-if="o.partner_id.street_name">
-                                <p t-field="o.partner_id.street_name" />
+                                <span t-field="o.partner_id.street_name" />
                             </t>
                             <t t-if="o.partner_id.street_number">
                                 <span>No. <span t-field="o.partner_id.street_number" /> </span>
@@ -128,6 +129,7 @@
                             <t t-if="o.partner_id.l10n_mx_edi_colony">
                                 <span>Col. <span t-field="o.partner_id.l10n_mx_edi_colony" /> </span>
                             </t>
+                            <br/>
                             <t t-if="o.partner_id.zip">
                                 <span>CP. <span t-field="o.partner_id.zip" /> </span>
                             </t>
@@ -136,6 +138,7 @@
                                 <span t-field="o.partner_id.state_id.name" />
                                 <span t-field="o.partner_id.country_id.name" />
                             </t>
+                            <br/>
                             <t t-if="o.partner_id.phone">
                                 <span>Tel. <span t-field="o.partner_id.phone" /> </span>
                             </t>
