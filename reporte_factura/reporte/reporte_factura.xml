@@ -117,14 +117,45 @@
                         <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor">
                             <strong>Receptor</strong>
                             <p t-esc="xml.Receptor.get('Nombre')"/>
-                            <span>RFC: <span t-esc="Receptor.get('Rfc')"/> </span>
+                            <p>RFC: <span t-esc="xml.Receptor.get('Rfc')"/> </p>
+                            <t t-if="o.partner_id.street_name">
+                                <p t-field="o.partner_id.street_name" />
+                            </t>
+                            <t t-if="o.partner_id.street_number">
+                                <span>No. <span t-field="o.partner_id.street_number" /> </span>
+                            </t>
+                            <t t-if="o.partner_id.l10n_mx_edi_colony">
+                                <span>Col. <span t-field="o.partner_id.l10n_mx_edi_colony" /> </span>
+                            </t>
+                            <t t-if="o.partner_id.zip">
+                                <span>CP. <span t-field="o.partner_id.zip" /> </span>
+                            </t>
+                            <t t-if="o.partner_id.city">
+                                <span t-field="o.partner_id.city" />
+                                <span t-field="o.partner_id.state_id.name" />
+                                <span t-field="o.partner_id.country_id.name" />
+                            </t>
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel. <span t-field="o.partner_id.phone" /> </span>
+                            </t>
                         </div>
-                        <t t-if="o.partner_id.property_account_position_id">
-                            <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor">
-                                <strong>Régimen Fiscal</strong>
-                                <p t-field="o.partner_id.property_account_position_id.name" />
-                            </div>
-                        </t>
+                        <div class="col-auto mw-100 mb-4" t-if="o.partner_id.property_account_position_id.name" name="property">
+                            <strong>Régimen Fiscal</strong>
+                            <p t-field="o.partner_id.property_account_position_id.name" />
+                        </div>
+                        <div class="col-auto mw-100 mb-4" t-if="xml.get('LugarExpedicion')" name="expedicion">
+                            <strong>Lugar de Expedición</strong>
+                            <p t-esc="xml.get('LugarExpedicion')"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago')" name="metodopago">
+                            <strong>Método de Pago</strong>
+                            <t t-if="xml.get('MetodoPago') == 'PUE'">
+                                <p>PUE - PAGO EN UNA SOLA EXHIBICIÓN</p>
+                            </t>
+                            <t t-if="xml.get('MetodoPago') == 'PPD'">
+                                <p>PPD - PAGO EN PARCIALIDADES O DIFERIDO</p>
+                            </t>
+                        </div>
                         <!--<div class="col-auto mw-100 mb-2" t-if="o.name" name="description">
                             <strong>Descripción:</strong>
                             <p class="m-0" t-field="o.name"/>
