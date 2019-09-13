@@ -143,15 +143,15 @@
                                 <span>Tel. <span t-field="o.partner_id.phone" /> </span>
                             </t>
                         </div>
-                        <div class="col-auto mw-100 mb-4" t-if="o.partner_id.property_account_position_id.name" name="property">
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name" name="property">
                             <strong>Régimen Fiscal</strong>
                             <p t-field="o.partner_id.property_account_position_id.name" />
                         </div>
-                        <div class="col-auto mw-100 mb-4" t-if="xml.get('LugarExpedicion')" name="expedicion">
+                        <div class="col-auto mw-100 mb-2" t-if="xml.get('LugarExpedicion')" name="expedicion" style="font-size:9pt;">
                             <strong>Lugar de Expedición</strong>
                             <p t-esc="xml.get('LugarExpedicion')"/>
                         </div>
-                        <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago')" name="metodopago">
+                        <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago')" name="metodopago" style="font-size:9pt;">
                             <strong>Método de Pago</strong>
                             <t t-if="xml.get('MetodoPago') == 'PUE'">
                                 <p>PUE - PAGO EN UNA SOLA EXHIBICIÓN</p>
