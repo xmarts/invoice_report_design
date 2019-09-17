@@ -114,7 +114,7 @@
                     <br/>
                     <br/>
                     <div id="informations" class="row mt32 mb32" style="border-top:6px solid #F77B22;">
-                        <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor" style="font-size:9pt;">
+                        <div class="col-auto mw-100 mb-4" t-if="xml.Receptor.get('Nombre')" name="receptor" style="font-size:10pt;">
                             <strong>Receptor</strong>
                             <br/>
                             <span t-esc="xml.Receptor.get('Nombre')"/>
@@ -143,18 +143,24 @@
                                 <span>Tel. <span t-field="o.partner_id.phone" /> </span>
                             </t>
                         </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name" name="property" style="font-size:9pt;">
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name" style="font-size:10pt;">
                             <strong>Régimen Fiscal</strong>
+                            <br/>
                             <span t-field="o.partner_id.property_account_position_id.name"/>
                             <br/>
                             <strong>Efecto de comprobante</strong>
-                            <span />
+                            <br/>
+                            <span>Aqui va efecto comprobante</span>
+                            <br/>
+                            <strong>Uso CFDI</strong>
+                            <br/>
+                            <span>Aqui va uso de CFDI</span>
                         </div>
-                        <div class="col-auto mw-100 mb-2" t-if="xml.get('LugarExpedicion')" name="expedicion" style="font-size:9pt;">
+                        <div class="col-auto mw-100 mb-2" t-if="xml.get('LugarExpedicion')" name="expedicion" style="font-size:10pt;">
                             <strong>Lugar de Expedición</strong>
                             <p t-esc="xml.get('LugarExpedicion')"/>
                         </div>
-                        <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago')" name="metodopago" style="font-size:9pt;">
+                        <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago')" name="metodopago" style="font-size:10pt;">
                             <strong>Método de Pago</strong>
                             <t t-if="xml.get('MetodoPago') == 'PUE'">
                                 <p>PUE - PAGO EN UNA SOLA EXHIBICIÓN</p>
