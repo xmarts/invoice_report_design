@@ -144,7 +144,7 @@
                             </t>
                         </div>
                         <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id or o.l10n_mx_edi_usage" style="font-size:10pt;">
-                            <strong>Régimen</strong>
+                            <strong>Régimen Fiscal</strong>
                             <br/>
                             <span t-field="o.partner_id.property_account_position_id"/>
                             <br/>
@@ -170,45 +170,23 @@
                             </t>
                         </div>
                         <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago') or xml.get('LugarExpedicion')" name="metodopago" style="font-size:10pt;">
-                            <strong>Lugar de Expedición</strong>
-                            <span t-esc="xml.get('LugarExpedicion')"/>
-                            <br/>
-                            <strong>Método de Pago</strong>
-                            <t t-if="xml.get('MetodoPago') == 'PUE'">
-                                <p>PUE - PAGO EN UNA SOLA EXHIBICIÓN</p>
+                            <t t-if="xml.get('LugarExpedicion')">
+                                <strong>Lugar de Expedición</strong>
+                                <br/>
+                                <span t-esc="xml.get('LugarExpedicion')"/>
+                                <br/>
                             </t>
-                            <t t-if="xml.get('MetodoPago') == 'PPD'">
-                                <p>PPD - PAGO EN PARCIALIDADES O DIFERIDO</p>
+                            <t t-if="xml.get('MetodoPago')">
+                                <strong>Método de Pago</strong>
+                                <t t-if="xml.get('MetodoPago') == 'PUE'">
+                                    <p>PUE - PAGO EN UNA SOLA EXHIBICIÓN</p>
+                                </t>
+                                <t t-if="xml.get('MetodoPago') == 'PPD'">
+                                    <p>PPD - PAGO EN PARCIALIDADES O DIFERIDO</p>
+                                </t>
                             </t>
+                            
                         </div>
-                        <!--<div class="col-auto mw-100 mb-2" t-if="o.name" name="description">
-                            <strong>Descripción:</strong>
-                            <p class="m-0" t-field="o.name"/>
-                        </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.date_invoice" name="invoice_date">
-                            <strong>Fecha de la factura:</strong>
-                            <p class="m-0" t-field="o.date_invoice"/>
-                        </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.origin" name="origin">
-                            <strong>Fuente:</strong>
-                            <p class="m-0" t-field="o.origin"/>
-                        </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
-                            <strong>Código de cliente:</strong>
-                            <p class="m-0" t-field="o.partner_id.ref"/>
-                        </div>-->
-                        <!--<div name="reference" class="col-auto mw-100 mb-2" t-if="o.reference">
-                            <strong>Reference:</strong>
-                            <p class="m-0" t-field="o.reference"/>
-                        </div>-->
-                        <!--<div class="col-auto mw-100 mb-2">
-                            <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
-                            <t t-if="xml">
-                                <strong>Método pago:</strong>
-                                <t t-set="met_pag" t-value="xml.get('MetodoPago')"/>
-                                <p t-esc="met_pag"/>
-                            </t>
-                        </div>-->
                     </div>
 
                     <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
