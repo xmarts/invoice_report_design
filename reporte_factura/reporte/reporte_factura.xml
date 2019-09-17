@@ -255,7 +255,7 @@
                                             </t>
                                         </td>
                                         <td name="account_invoice_line_name"><span t-field="line.product_id.name"/></td>
-                                        <td><span>No.</span></td>
+                                        <td><span t-field="line.l10n_mx_edi_customs_number"/></td>
                                         <td class="d-none"><span t-field="line.origin"/></td>
                                         <td class="text-right">
                                             <span t-field="line.quantity"/>
