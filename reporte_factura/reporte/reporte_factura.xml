@@ -15,14 +15,14 @@
                                 <td style="width:50%;padding:4px;background:#f1f1f1;font-size:9pt;">
                                     <div class="text-center">
                                         <table style="width:90%;">
-                                            <t t-if="o.partner_id.property_account_position_id.name">
+                                            <!--<t t-if="o.partner_id.property_account_position_id.name">
                                                 <tr>
                                                     <th style="border: inset 0pt;padding:0 10px 0 0 !important;font-size:8pt;text-align:right;">Posicion fiscal</th>
                                                     <td style="border: inset 0pt;padding:0 !important;font-size:8pt;text-align:left;">
                                                         <span t-field="o.partner_id.property_account_position_id.name"/>
                                                     </td>
                                                 </tr>
-                                            </t>
+                                            </t>-->
                                             <!--<t t-if="o.l10n_mx_edi_usage">
                                                 <tr>
                                                     <th style="border: inset 0pt;padding:0 10px 0 0 !important;font-size:8pt;text-align:right;">Uso de CFDI</th>
@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="text-center">
                                         <span style="width:100%;color:#F77B22;text-align:center;">CRISTÓBAL FRANCISCO DUEÑEZ BARBA</span><br/>
-                                        <span t-if="o.company_id.vat"><span t-field="o.company_id.vat"/></span><br/>
+                                        <!--<span t-if="o.company_id.vat"><span t-field="o.company_id.vat"/></span><br/>-->
                                         <span t-if="o.company_id.email"><span t-field="o.company_id.email"/></span>
                                     </div>
                                 </td>
@@ -143,9 +143,12 @@
                                 <span>Tel. <span t-field="o.partner_id.phone" /> </span>
                             </t>
                         </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name" name="property">
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name" name="property" style="font-size:9pt;">
                             <strong>Régimen Fiscal</strong>
-                            <p t-field="o.partner_id.property_account_position_id.name" />
+                            <span t-field="o.partner_id.property_account_position_id.name"/>
+                            <br/>
+                            <strong>Efecto de comprobante</strong>
+                            <span />
                         </div>
                         <div class="col-auto mw-100 mb-2" t-if="xml.get('LugarExpedicion')" name="expedicion" style="font-size:9pt;">
                             <strong>Lugar de Expedición</strong>
