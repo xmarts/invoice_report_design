@@ -143,10 +143,10 @@
                                 <span>Tel. <span t-field="o.partner_id.phone" /> </span>
                             </t>
                         </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name or o.l10n_mx_edi_usage" style="font-size:10pt;">
-                            <strong>Régimen Fiscal</strong>
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id or o.l10n_mx_edi_usage" style="font-size:10pt;">
+                            <strong>Régimen</strong>
                             <br/>
-                            <span t-field="o.partner_id.property_account_position_id.name"/>
+                            <span t-field="o.partner_id.property_account_position_id"/>
                             <br/>
                             <strong>Efecto de comprobante</strong>
                             <br/>
@@ -171,7 +171,7 @@
                         </div>
                         <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago') or xml.get('LugarExpedicion')" name="metodopago" style="font-size:10pt;">
                             <strong>Lugar de Expedición</strong>
-                            <p t-esc="xml.get('LugarExpedicion')"/>
+                            <span t-esc="xml.get('LugarExpedicion')"/>
                             <br/>
                             <strong>Método de Pago</strong>
                             <t t-if="xml.get('MetodoPago') == 'PUE'">
