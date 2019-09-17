@@ -143,7 +143,7 @@
                                 <span>Tel. <span t-field="o.partner_id.phone" /> </span>
                             </t>
                         </div>
-                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name or o.l10n_mx_edi_usage.name" style="font-size:10pt;">
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id.property_account_position_id.name or o.l10n_mx_edi_usage" style="font-size:10pt;">
                             <strong>Régimen Fiscal</strong>
                             <br/>
                             <span t-field="o.partner_id.property_account_position_id.name"/>
@@ -154,7 +154,7 @@
                             <br/>
                             <strong>Uso CFDI</strong>
                             <br/>
-                            <span t-field="o.l10n_mx_edi_usage.name"/>
+                            <span t-field="o.l10n_mx_edi_usage"/>
                         </div>
                         <div class="col-auto mw-100 mb-2" t-if="xml.get('Fecha') or o.l10n_mx_edi_payment_method_id" name="expedicion" style="font-size:10pt;">
                             <t t-if="xml.get('Fecha')">
@@ -166,7 +166,7 @@
                             <t t-if="o.l10n_mx_edi_payment_method_id">
                                 <strong>Forma de pago</strong>
                                 <br/>
-                                <span t-field="o.l10n_mx_edi_payment_method_id.name"/>
+                                <span t-field="o.l10n_mx_edi_payment_method_id"/>
                             </t>
                         </div>
                         <div class="col-auto mw-100 mb-4" t-if="xml.get('MetodoPago') or xml.get('LugarExpedicion')" name="metodopago" style="font-size:10pt;">
