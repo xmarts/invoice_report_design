@@ -237,7 +237,7 @@
                                         <td name="account_invoice_line_name"><span t-field="line.product_id.name"/></td>
                                         <td><span t-field="line.l10n_mx_edi_customs_number"/></td>
                                         <td>
-                                            <t t-if="line.product_id.uom_id.l10n_mx_edi_code_sat_id">
+                                            <t t-if="line.product_id.uom_id.l10n_mx_edi_code_sat_id.name">
                                                 <td><span t-field="line.product_id.uom_id.l10n_mx_edi_code_sat_id"/></td>
                                             </t>
                                         </td>
