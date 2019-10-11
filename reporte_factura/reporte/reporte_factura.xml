@@ -149,7 +149,7 @@
                             <br/>
                             <span t-field="o.partner_id.property_account_position_id"/>
                             <br/>
-                            <strong>Efecto de comprobante</strong>
+                            <strong>Ingreso</strong>
                             <br/>
                             <span>Aqui va efecto comprobante</span>
                             <br/>
