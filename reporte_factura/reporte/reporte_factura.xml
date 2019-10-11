@@ -149,9 +149,9 @@
                             <br/>
                             <span t-field="o.partner_id.property_account_position_id"/>
                             <br/>
-                            <strong>Ingreso</strong>
+                            <strong>Efecto de comprobante</strong>
                             <br/>
-                            <span>Aqui va efecto comprobante</span>
+                            <span>Ingreso</span>
                             <br/>
                             <strong>Uso CFDI</strong>
                             <br/>
