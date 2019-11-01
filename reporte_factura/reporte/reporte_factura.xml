@@ -87,24 +87,9 @@
                                     <b><span t-field="o.l10n_mx_edi_cfdi_uuid"/></b>
                                 </td>
                                 <td style="width:50%;padding:4px;background:#F77B22;color:#fff;font-size:10pt;border-left:1px solid #fff">
-                                    <strong><span>Monopark</span></strong>
-                                    <br/>
-                                    <span t-field="o.company_id.street"/>
-                                    <t>
-                                        <span> Col. <span t-field="o.company_id.l10n_mx_edi_colony"/></span>
-                                    </t>
-                                    <br/>
-                                    <t t-if="o.company_id.zip">
-                                        <span> C.P.<span t-field="o.company_id.zip"/></span>
-                                        <span> </span>
-                                    </t>
-                                    <span t-field="o.company_id.city"/>
-                                    <span> </span>
-                                    <span t-field="o.company_id.state_id.code"/>
-                                    <span> </span>
-                                    <span t-field="o.company_id.country_id"/>
-                                    <br/>
-                                    <span t-field="o.company_id.phone"/>
+                                    <span t-if="o.partner_id.parent_id.name"><span t-field="o.partner_id.parent_id.name"/></span>
+                                    <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+                                    <span t-if="o.partner_id.vat"><span t-field="o.partner_id.vat"/></span>
                                 </td>
                             </tr>
                         </table>    
@@ -151,9 +136,8 @@
                             <br/>
                             <strong>Efecto de comprobante</strong>
                             <br/>
-                            <span>Ingreso </span>
+                            <span>Aqui va efecto comprobante</span>
                             <br/>
-
                             <strong>Uso CFDI</strong>
                             <br/>
                             <span t-field="o.l10n_mx_edi_usage"/>
@@ -202,7 +186,6 @@
                                 <th class="text-left"><span>Código</span></th>
                                 <th class="text-left"><span>Producto</span></th>
                                 <th class="text-left"><span>Número de pedimento</span></th>
-                                <th class="text-left"><span>Código sat UdM</span></th>
                                 <th class="d-none text-left"><span>Source Document</span></th>
                                 <th class="text-right"><span>Cantidad</span></th>
                                 <th t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Precio unitario</span></th>
@@ -232,16 +215,15 @@
                                         <!--<td name="unidad_medida"><span t-field="line.uom_id"/></td>-->
                                         <td>
                                             <t t-if="line.product_id.default_code">
-                                                <span t-field="line.product_id.default_code"/>
+                                                <span t-field="line.product_id.l10n_mx_edi_code_sat_id.code"/>
                                             </t>
                                         </td>
-                                        <td name="account_invoice_line_name"><span t-field="line.product_id.name"/></td>
-                                        <td><span t-field="line.l10n_mx_edi_customs_number" /></td>
-                                        <td>
-                                            <t t-if="line.product_id.uom_id.l10n_mx_edi_code_sat_id.name">
-                                                <span t-field="line.product_id.uom_id.l10n_mx_edi_code_sat_id"/>
-                                            </t>
+                                        <td name="account_invoice_line_name">
+                                            <span t-field="line.product_id.default_code"/>
+                                            <span t-field="line.product_id.name"/>
                                         </td>
+                                        
+                                        <td><span t-field="line.l10n_mx_edi_customs_number"/></td>
                                         <td class="d-none"><span t-field="line.origin"/></td>
                                         <td class="text-right">
                                             <span t-field="line.quantity"/>
@@ -352,59 +334,6 @@
                             <strong class="text-center">The SEPA QR Code informations are not set correctly.</strong><br/>
                         </p>
                     </div>
-
-
-                    <t t-if="o.l10n_mx_edi_cfdi_uuid">
-                        <div class="row" id="complement">
-                            <div class="barcode col-3">
-                                <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
-                                <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s' % quote_plus('https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,tt=0,id=o.l10n_mx_edi_cfdi_uuid) + '&amp;fe=%s' % quote_plus(sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
-                            </div>
-                            <div class="complement-details col-9">
-                                <div class="digital-stamp">
-                                    <span>Digital stamp of the emitter</span>
-                                </div>
-                                <div class="digital-stamp-content">
-                                    <span t-esc="xml.get('Sello', 'No identificado')"/>
-                                </div>
-                                <div class="digital-stamp">
-                                    <span>Digital stamp SAT</span>
-                                </div>
-                                <div class="digital-stamp-content">
-                                    <span t-esc="tfd.get('SelloSAT', 'No identificado')"/>
-                                </div>
-                                <div class="digital-stamp">
-                                    <span>Original chain complement of digital certification SAT</span>
-                                </div>
-                                <div class="digital-stamp-content">
-                                    <span class="nowrap" t-esc="tfd_original_string"/>
-                                </div>
-                                <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp">
-                                    <span>Issued from</span>
-                                </div>
-                                <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp-content">
-                                    <span t-esc="xml.get('LugarExpedicion', 'No identificado')"/>
-                                </div>
-                                <div class="digital-stamp">
-                                    <span>Extra Info</span>
-                                </div>
-                                <div class="digital-stamp-content">
-                                    <span>Emitter certificate:</span> <span t-esc="xml.get('NoCertificado')"/>
-                                    <span> | SAT Certificate:</span> <span t-esc="tfd.get('NoCertificadoSAT')"/>
-                                    <span> | Expedition place:</span> <span t-esc="xml.get('LugarExpedicion')"/>
-                                    <span> | Fiscal Regime:</span><span t-esc="xml.Emisor.get('RegimenFiscal', '')"/>
-                                    <span> | Emission Date:</span> <span t-esc="xml.get('Fecha', '').replace('T', ' ')"/>
-                                    <span> | Certification Date:</span> <span t-esc="tfd.get('FechaTimbrado', '').replace('T', ' ')"/>
-                                    <span> | Fiscal Folio:</span> <span t-esc="tfd.get('UUID')"/>
-                                </div>
-                                <div class="digital-stamp-content text-center">
-                                    <strong>This document is a printed representation of a CFDI</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </t>
-
-                    
                 </div>
             </t>        
         </xpath>
