@@ -66,10 +66,9 @@
                 
                                         </table>
                                     </div>
-                                    <div class="text-center">
+                                      <div class="text-center">
                                         <span style="width:100%;color:#F77B22;text-align:center;">CRISTÓBAL FRANCISCO DUEÑEZ BARBA</span><br/>
-                                        <!--<span t-if="o.company_id.vat"><span t-field="o.company_id.vat"/></span><br/>-->
-                                        <span t-if="o.company_id.email"><span t-field="o.company_id.email"/></span>
+                                        <span>auxiliar@monopark.com.mx</span>
                                     </div>
                                 </td>
                             </tr>
@@ -86,10 +85,25 @@
                                     </h2></b>
                                     <b><span t-field="o.l10n_mx_edi_cfdi_uuid"/></b>
                                 </td>
-                                <td style="width:50%;padding:4px;background:#F77B22;color:#fff;font-size:10pt;border-left:1px solid #fff">
-                                    <span t-if="o.partner_id.parent_id.name"><span t-field="o.partner_id.parent_id.name"/></span>
-                                    <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
-                                    <span t-if="o.partner_id.vat"><span t-field="o.partner_id.vat"/></span>
+                                   <td style="width:50%;padding:4px;background:#F77B22;color:#fff;font-size:10pt;border-left:1px solid #fff">
+                                    <strong><span>Monopark</span></strong>
+                                    <br/>
+                                    <span t-field="o.company_id.street"/>
+                                    <t>
+                                        <span> Col. <span t-field="o.company_id.l10n_mx_edi_colony"/></span>
+                                    </t>
+                                    <br/>
+                                    <t t-if="o.company_id.zip">
+                                        <span> C.P.<span t-field="o.company_id.zip"/></span>
+                                        <span> </span>
+                                    </t>
+                                    <span t-field="o.company_id.city"/>
+                                    <span> </span>
+                                    <span t-field="o.company_id.state_id.code"/>
+                                    <span> </span>
+                                    <span t-field="o.company_id.country_id"/>
+                                    <br/>
+                                    <span t-field="o.company_id.phone"/>
                                 </td>
                             </tr>
                         </table>    
