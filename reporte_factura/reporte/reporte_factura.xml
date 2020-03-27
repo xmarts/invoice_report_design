@@ -34,7 +34,7 @@
                                                         <span t-esc="tfd.get('NoCertificadoSAT')"/>
                                                     </td>
                                                 </tr>
-                                            </t>
+                                            </t> 
                                             <t t-if="xml.get('Fecha')">
                                                 <tr>
                                                     <th style="border: inset 0pt;padding:0 10px 0 0 !important;font-size:8pt;text-align:right;">
@@ -186,6 +186,31 @@
                                 </t>
                             </t>
                             
+                        </div>
+                        <br/>
+                        <div class="col-3 mw-100 mb-2" t-if="o.name" name="description">
+                            <strong>Description:</strong>
+                            <p class="m-0" t-field="o.name"/>
+                        </div>
+                        <div class="col-3 mw-100 mb-2" t-if="o.date_invoice" name="invoice_date">
+                            <strong>Invoice Date:</strong>
+                            <p class="m-0" t-field="o.date_invoice"/>
+                        </div>
+                        <div class="col-3 mw-100 mb-2" t-if="o.date_due and o.type == 'out_invoice' and o.state in ('open', 'in_payment', 'paid')" name="due_date">
+                            <strong>Due Date:</strong>
+                            <p class="m-0" t-field="o.date_due"/>
+                        </div>
+                        <div class="col-3 mw-100 mb-2" t-if="o.origin" name="origin">
+                            <strong>Source:</strong>
+                            <p class="m-0" t-field="o.origin"/>
+                        </div>
+                        <div class="col-3 mw-100 mb-2" t-if="o.partner_id.ref" name="customer_code">
+                            <strong>Customer Code:</strong>
+                            <p class="m-0" t-field="o.partner_id.ref"/>
+                        </div>
+                        <div name="reference" class="col-3 mw-100 mb-2" t-if="o.reference">
+                            <strong>Reference:</strong>
+                            <p class="m-0" t-field="o.reference"/>
                         </div>
                     </div>
 
