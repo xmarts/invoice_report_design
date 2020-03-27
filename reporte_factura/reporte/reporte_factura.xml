@@ -215,6 +215,7 @@
                                 <strong>Reference:</strong>
                                 <p class="m-0" t-field="o.reference"/>
                             </div>
+
                     </div>
                     <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
 
@@ -361,6 +362,12 @@
                         <p>
                             <b>OBSERVACIONES: </b><span>SIN OBSERVACIONES</span>
                         </p> 
+                        <p t-if="o.l10n_mx_edi_origin">
+                            <t t-set="cfdi" t-value="o.l10n_mx_edi_origin.split('|')"/>
+                            <b>Tipo de relacion: </b><span t-esc="cfdi[0]"/><span>            </span>
+                            <b>UUID Relacionado: </b><span t-esc="cfdi[1]"/>
+                            
+                        </p>
                     </div>
                     <!--<p t-if="o.comment" name="comment">
                         <span t-field="o.comment"/>
