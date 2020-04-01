@@ -234,7 +234,10 @@
                                 <!--<th class="text-left"><span>Uni. Med.</span></th>-->
                                 <th class="text-left"><span>Código</span></th>
                                 <th class="text-left"><span>Producto</span></th>
+                                <t t-if="o.invoice_line_ids.l10n_mx_edi_customs_number">
                                 <th class="text-left"><span>Número de pedimento</span></th>
+                                    
+                                </t>
                                 <th class="text-left"><span>Código sat UdM</span></th>
                                 <th class="text-right"><span>Cantidad</span></th>
                                 <th t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Precio unitario</span></th>
@@ -271,8 +274,9 @@
                                             <span t-field="line.product_id.default_code"/>
                                             <span t-field="line.product_id.name"/>
                                         </td>
-
-                                        <td><span t-field="line.l10n_mx_edi_customs_number"/></td>
+                                        <t t-if="line.l10n_mx_edi_customs_number">
+                                            <td><span t-field="line.l10n_mx_edi_customs_number"/></td>
+                                        </t>
                                         <td>
                                             <span t-field="line.product_id.uom_id.l10n_mx_edi_code_sat_id"/>
                                         </td>
