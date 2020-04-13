@@ -270,7 +270,7 @@
                                     <t t-if="not line.display_type" name="account_invoice_line_accountable">
                                         <!--<td name="unidad_medida"><span t-field="line.uom_id"/></td>-->
                                         <td>
-                                            <t t-if="line.product_id.default_code">
+                                            <t t-if="line.product_id.l10n_mx_edi_code_sat_id.code">
                                                 <span t-field="line.product_id.l10n_mx_edi_code_sat_id.code"/>
                                             </t>
                                         </td>
